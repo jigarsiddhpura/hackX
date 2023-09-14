@@ -24,6 +24,8 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Icons } from "./icons/index";
 import { link as linkStyles } from "@nextui-org/theme";
+import { Kbd } from "@nextui-org/kbd";
+import { Input } from "@nextui-org/input";
 
 import NextLink from "next/link";
 import clsx from "clsx";
@@ -33,6 +35,7 @@ import {
   GithubIcon,
   InstaIcon,
   HeartFilledIcon,
+  SearchIcon
 } from "@/components/icons/icons";
 import { Logo } from "@/components/icons/icons";
 import { useSession } from "next-auth/react";
@@ -70,11 +73,32 @@ export const Navbar = () => {
       label: "History",
       href: "/",
     },
-    {
-      label: "Join Meet",
-      href: "/",
-    },
+    // {
+    //   label: "Join Meet",
+    //   href: "/",
+    // },
   ];
+
+  const searchInput = (
+		<Input
+			aria-label="Search"
+			classNames={{
+				inputWrapper: "bg-default-100",
+				input: "text-sm",
+			}}
+			endContent={
+				<Kbd className="hidden lg:inline-block" keys={["command"]}>
+					K
+				</Kbd>
+			}
+			labelPlacement="outside"
+			placeholder="Enter meet link..."
+			startContent={
+				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+			}
+			type="search"
+		/>
+	);
 
   return (
     <NextUINavbar maxWidth="xl" shouldHideOnScroll isBordered className="mb-2">
@@ -101,6 +125,13 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
         </ul>
+        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent
+        className="hidden sm:flex basis-1/5 sm:basis-full"
+        justify="end"
+      >
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -146,12 +177,6 @@ export const Navbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
         <NavbarItem className="hidden sm:flex gap-2 ">
           <Link isExternal href={""} aria-label="Twitter">
             <TwitterIcon className="text-default-500 hover:text-blue-400" />
