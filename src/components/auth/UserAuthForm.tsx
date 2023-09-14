@@ -1,7 +1,7 @@
 "use client";
 import { useState, type FC } from "react";
 import { signIn } from "next-auth/react";
-import { Icons } from "../icons";
+import { Icons } from "../icons/index";
 import { Button, Spinner } from "@nextui-org/react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}

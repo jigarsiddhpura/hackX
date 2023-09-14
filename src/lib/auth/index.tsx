@@ -1,4 +1,4 @@
-import {  getServerSession, type NextAuthOptions } from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
         session.user.name = token.name;
         session.user.image = token["image"] as string;
       }
-      return session; 
+      return session;
     },
     async jwt({ token, user }) {
       const dbUser = (
@@ -40,12 +40,15 @@ export const authOptions: NextAuthOptions = {
         return token;
       }
       return {
-        id: dbUser.id,
+        id: dbUser.id as unknown as string,
         email: dbUser.email,
         name: dbUser.name,
         image: dbUser.image,
         role: dbUser.role,
       };
+    },
+    redirect() {
+      return "/";
     },
   },
 };

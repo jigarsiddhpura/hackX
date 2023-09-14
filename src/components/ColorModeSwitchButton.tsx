@@ -8,7 +8,7 @@ export default function ColorModeSwitchButton() {
   const { setTheme } = useTheme();
 
   return (
-    <div className="p-1 pt-2">
+    <div className="p-1">
       <SunIcon
         onClick={() => setTheme("light")}
         className="hover:cursor-pointer text-yellow-100 absolute h-[1.4rem] w-[1.4rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 drop-shadow-[0px_9px_7px_#FFE87C]"
