@@ -16,11 +16,7 @@ export default function Home() {
         <Button  >
           asd
         </Button>
-        <p>a2424</p>
       </div>
-      <div className=" h-96"></div>
-      <div className=" h-96"></div>
-      <div className=" h-96"></div>
     </>
   );
 }

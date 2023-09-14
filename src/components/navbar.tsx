@@ -32,7 +32,6 @@ import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import { ThemeSwitch } from "@/components/theme-switch";
 import {
 	TwitterIcon,
 	GithubIcon,
@@ -40,9 +39,9 @@ import {
 	HeartFilledIcon,
 	SearchIcon,
 	InstaIcon
-} from "@/components/icons";
+} from "@/components/icons/icons";
 
-import { Logo } from "@/components/icons";
+import { Logo } from "@/components/icons/icons";
 import { useSession } from "next-auth/react";
 
 const ListItem = React.forwardRef<
@@ -185,8 +184,8 @@ export const Navbar = () => {
 						<GithubIcon className="text-default-500" />
 					</Link> */}
 
-					<ThemeSwitch />
-					{/* <ColorModeSwitchButton /> */}
+					{/* <ThemeSwitch /> */}
+					<ColorModeSwitchButton />
 				</NavbarItem>
 
 				{/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
@@ -208,7 +207,8 @@ export const Navbar = () => {
 				<Link isExternal href={siteConfig.links.github} aria-label="Github">
 					<GithubIcon className="text-default-500" />
 				</Link>
-				<ThemeSwitch />
+				<ColorModeSwitchButton />
+				
 				<NavbarMenuToggle />
 			</NavbarContent>
 
