@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <div className="h-96">
-        <Button color="secondary" >
+        <Button  >
           asd
         </Button>
         <p>a2424</p>

@@ -29,7 +29,7 @@ export default function RootLayout({
         <ReactQueryClientProvider>
           <AuthSessionProvider>
             <UIProvider>
-              <div className="min-h-screen container w-full antialiased bg-slate-50 text-black dark:bg-indigo-950 dark:text-zinc-300">
+              <div className="min-h-screen container w-full antialiased">
               {/* <Toaster /> */}
                 {children}
               </div>

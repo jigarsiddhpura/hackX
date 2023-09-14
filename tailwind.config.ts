@@ -17,22 +17,6 @@ const theme: ConfigThemes = {
           "0px 0px 30px 0px rgb(0 0 0 / 0.04), 0px 30px 60px 0px rgb(0 0 0 / 0.12), 0px 0px 1px 0px rgb(0 0 0 / 0.3)",
       },
     },
-    colors: {
-      background: "#131",
-      default: "#f32",
-      content2: "#f13",
-      foreground: "#13f3",
-      content1: "#fff1",
-      focus: "#ff25ff",
-      primary: {
-        DEFAULT: "#ff25ff",
-        foreground: "#fff25f",
-      },
-      secondary: {
-        DEFAULT: "#ff25ff",
-        foreground: "#fff25f",
-      },
-    },
   },
   dark: {
     layout: {
