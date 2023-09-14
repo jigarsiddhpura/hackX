@@ -3,9 +3,9 @@
 export default function index() {
   return (
     <>
-    <div className="relative mt-16 bg-deep-purple-accent-400">
+    <div className="relative mt-16 bg-purple-deep">
       <svg
-        className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400"
+        className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-purple-deep"
         preserveAspectRatio="none"
         viewBox="0 0 1440 54"
       >
@@ -38,7 +38,7 @@ export default function index() {
                 <rect x="14" y="1" width="7" height="6" />
                 <rect x="14" y="11" width="7" height="12" />
               </svg>
-              <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+              <span className="ml-2 text-xl font-bold tracking-wide uppercase">
                 Company
               </span>
             </a>

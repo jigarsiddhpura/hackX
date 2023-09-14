@@ -32,6 +32,9 @@ const theme: ConfigThemes = {
           "0px 0px 30px 0px rgb(0 0 0 / 0.07), 0px 30px 60px 0px rgb(0 0 0 / 0.26), inset 0px 0px 1px 0px rgb(255 255 255 / 0.15)",
       },
     },
+    colors: {
+      primary: "#064331",
+    },
   },
 };
 
@@ -70,7 +73,15 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "purple-deep": "#52057B",
+        "purple-lighter": "#892CDC",
+        "purple-lightest": "#BC6FF1",
+        greenish: "#064331",
+        yellowish: "#EBE000",
+      },
+    },
   },
   darkMode: "class",
   //whats wrong with the below code i want both nextui and tailwindcss animate plugin
