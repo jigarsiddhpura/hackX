@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
   //! Think of good description
   //! Also need a favicon
-  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, nihil!  `,
+  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, nihil!`,
 };
 export default function RootLayout({
   children,

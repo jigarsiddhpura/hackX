@@ -26,6 +26,7 @@ export default function UserDropdown() {
             isBordered
             showFallback
             as="button"
+            size="sm"
             className="transition-transform flex place-items-center justify-center hover:scale-105"
             src={data?.user?.image || undefined}
             fallback={<User2 />}
