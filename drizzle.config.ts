@@ -6,7 +6,8 @@ dotenv.config({
 });
 
 export default {
-  schema: "./src/lib/db/schema/*.ts",
+  //make the schema accept all the files in the schema folder even those nested amongst other folders
+  schema: "./src/lib/db/schema/**/*.ts",
   driver: "pg",
   dbCredentials: {
     connectionString: process.env["DATABASE_URL"]!,

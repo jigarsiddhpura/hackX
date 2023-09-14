@@ -5,26 +5,25 @@ import {
   primaryKey,
   integer,
   pgEnum,
+  serial,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
-export const rolesEnum = pgEnum("roles", ["teacher", "student"]);
+export const rolesEnum = pgEnum("roles", ["teacher", "student", "admin"]);
 
 export const users = pgTable("user", {
-  id: text("id").notNull().primaryKey(),
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
-
   createdAt: timestamp("createdAt", { mode: "date", withTimezone: true })
     .notNull()
     .defaultNow(),
   //! default role kya hoga
   role: rolesEnum("role").default("student").notNull(),
 });
-
 export type SelectUser = InferSelectModel<typeof users>;
 export type InsertUser = InferInsertModel<typeof users>;
 
