@@ -9,6 +9,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
   const [isLoading, setIsLoading] = useState(false);
   const loginWithGoogle = async () => {
+    console.log("loginWithGoogle");
     setIsLoading(true);
 
     try {
