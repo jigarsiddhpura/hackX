@@ -1,12 +1,12 @@
-import { relations } from "drizzle-orm";
-import { integer, pgTable, serial } from "drizzle-orm/pg-core";
+import { relations, type InferSelectModel } from "drizzle-orm";
+import { integer, pgTable, serial, uuid } from "drizzle-orm/pg-core";
 import { users } from "../../users";
 import { meeting } from "../../meeting";
 import { admin } from "../admin";
 
 export const teacher = pgTable("teacher", {
-  id: serial("id").primaryKey(),
-  user_id: integer("user_id")
+  id: uuid("id").defaultRandom().notNull(),
+  user_id: uuid("user_id")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   admin_id: integer("admin_id"),

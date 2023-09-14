@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { type FC } from "react";
 
 interface pageProps {
   params: {
-    id: string;
+    meetID: string;
   };
 }
 

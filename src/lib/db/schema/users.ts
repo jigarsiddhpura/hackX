@@ -10,7 +10,7 @@ import {
 import type { AdapterAccount } from "@auth/core/adapters";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
-export const rolesEnum = pgEnum("roles", ["teacher", "student", "admin"]);
+export const rolesEnum = pgEnum("roles", ["teacher", "student","admin"]);
 
 export const users = pgTable("user", {
   id: serial("id").primaryKey(),
@@ -25,7 +25,7 @@ export const users = pgTable("user", {
   role: rolesEnum("role").default("student").notNull(),
 });
 export type SelectUser = InferSelectModel<typeof users>;
-export type InsertUser = InferInsertModel<typeof users>;
+export type InsertUser = InferInsertModel<typeof users>;  
 
 export const accounts = pgTable(
   "account",

@@ -1,7 +1,7 @@
 "use client";
 import { useState, type FC } from "react";
 import { signIn } from "next-auth/react";
-import { Icons } from "../icons";
+import { Icons } from "../icons/index";
 import { Button, Spinner } from "@nextui-org/react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -9,6 +9,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
   const [isLoading, setIsLoading] = useState(false);
   const loginWithGoogle = async () => {
+    console.log("loginWithGoogle");
     setIsLoading(true);
 
     try {

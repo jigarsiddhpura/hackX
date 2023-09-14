@@ -1,15 +1,15 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { integer, pgTable, serial, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { meeting } from "../meeting";
 import { relations } from "drizzle-orm";
 
 export const statistics = pgTable("statistics", {
-  id: serial("id").primaryKey(),
+  id: uuid("id").defaultRandom().notNull(),
   image: text("image"),
   timeStamp: timestamp("startTime", { mode: "date", withTimezone: true })
     .notNull()
     .defaultNow(),
   sentiment: text("sentiment").notNull(),
-  meetingId: serial("meetingId")
+  meetingId: uuid("meetingId")
     .notNull()
     .references(() => meeting.id, { onDelete: "cascade" }),
 });
