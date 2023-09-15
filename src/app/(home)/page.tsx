@@ -101,7 +101,7 @@ export default function Home() {
       </div>
 
       <div className="h-96 mt-[120px]  flex justify-around">
-        <div className="w-[600px] h-[600px]">
+        <div className="relative w-full h-auto left-36">
           <Image
             width={530}
             height={530}
@@ -109,12 +109,13 @@ export default function Home() {
             alt="blob"
             data-aos="fade-right"
           />
-          {/*//TODO: yaha illustration hoga isko blob ke upar chipka */}
-          {/* <Lottie width={300} height={300} options={defaultOptions} /> */}
         </div>
-        <div>
+        <div className="relative right-96 w-full h-auto z-10" >
+          <Lottie width={450} height={450} options={defaultOptions} />
+        </div>
+        <div data-aos="zoom-in-left">
           <h1
-            className="text-6xl mt-10 w-[500px] h-[500px]"
+            className="text-6xl mt-10 w-[500px] h-[500px] relative right-36"
             data-aos="fade-right"
             data-aos-delay="300"
           >
@@ -262,12 +263,13 @@ export default function Home() {
 
       {/* //! ye section white mode me dikhao */}
       <div className=" h-96 mt-56 flex justify-around">
-        <div className="mx-10">
+        <div className="mx-32 my-8">
+          {/* <Image src={scanAnimation} width={300} alt="scanAnimation" /> */}
           <Image src={scanAnimation} width={300} alt="scanAnimation" />
         </div>
         <div
-          className="flex justify-center"
-          data-aos="fade-right"
+          className="flex justify-center align-middle my-20"
+          data-aos="zoom-in-left"
           data-aos-delay="300"
         >
           <h1 className="text-5xl ">

@@ -4,7 +4,7 @@ import { Roboto } from "next/font/google";
 import ReactQueryClientProvider from "@/providers/QueryClientProvider";
 import { UIProvider } from "@/providers/NextUIProvider";
 import AuthSessionProvider from "@/providers/AuthSessionProvider";
-// import { Toaster } from "@/components/ui/Toaster";
+import { Toaster } from 'react-hot-toast';
 
 const font = Roboto({
   weight: "400",
@@ -30,7 +30,7 @@ export default function RootLayout({
           <AuthSessionProvider>
             <UIProvider>
               <div className="min-h-screen container w-full antialiased">
-              {/* <Toaster /> */}
+              <Toaster />
                 {children}
               </div>
             </UIProvider>

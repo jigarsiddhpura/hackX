@@ -2,6 +2,8 @@
 import React from "react";
 import ColorModeSwitchButton from "./ColorModeSwitchButton";
 import UserDropdown from "./UserDropdown";
+import {EyeFilledIcon} from "@/components/icons/EyeFilledIcon";
+import {EyeSlashFilledIcon} from "@/components/icons/EyeSlashFilledIcon";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -11,6 +13,7 @@ import {
   NavbarItem,
   NavbarMenuItem,
   cn,
+  Divider,
 } from "@nextui-org/react";
 import {
   NavigationMenu,
@@ -26,10 +29,12 @@ import { Icons } from "./icons/index";
 import { link as linkStyles } from "@nextui-org/theme";
 import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
+import { AirplayIcon } from "lucide-react";
+import UserAuthForm from "@/components/auth/UserAuthForm";
 
 import NextLink from "next/link";
 import clsx from "clsx";
-
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox } from "@nextui-org/react";
 import {
   TwitterIcon,
   GithubIcon,
@@ -39,6 +44,8 @@ import {
 } from "@/components/icons/icons";
 import { Logo } from "@/components/icons/icons";
 import { useSession } from "next-auth/react";
+import SignIn from "@/components/auth/SignInWrapper";
+import { Sign } from "crypto";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -73,32 +80,38 @@ export const Navbar = () => {
       label: "History",
       href: "/",
     },
-    // {
-    //   label: "Join Meet",
-    //   href: "/",
-    // },
   ];
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+
+  // for password
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
+
+
   const searchInput = (
-		<Input
-			aria-label="Search"
-			classNames={{
-				inputWrapper: "bg-default-100",
-				input: "text-sm",
-			}}
-			endContent={
-				<Kbd className="hidden lg:inline-block" keys={["command"]}>
-					K
-				</Kbd>
-			}
-			labelPlacement="outside"
-			placeholder="Enter meet link..."
-			startContent={
-				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-			}
-			type="search"
-		/>
-	);
+    <Input
+      aria-label="Search"
+
+      classNames={{
+        inputWrapper: "bg-default-100",
+        input: "text-sm",
+      }}
+      endContent={
+        <Kbd className="hidden lg:inline-block" keys={["command"]}>
+          K
+        </Kbd>
+      }
+      labelPlacement="outside"
+      placeholder="Enter meet link..."
+      startContent={
+        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+      }
+      type="search"
+    />
+  );
 
   return (
     <NextUINavbar maxWidth="xl" shouldHideOnScroll isBordered className="mb-2">
@@ -206,11 +219,88 @@ export const Navbar = () => {
         {status === "authenticated" ? (
           <UserDropdown />
         ) : (
-          <Button as={Link} variant="faded" href="/login">
+          <Button as={Link} onPress={onOpen} variant="faded" >
             Login
           </Button>
         )}
       </NavbarItem>
+
+      {/* login modal below */}
+
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        placement="top-center"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className="container mx-auto flex my-5 py-3 w-full flex-col justify-center space-y-6 sm:w-[400px]">
+                  <div className="flex flex-col space-y-2 text-center">
+                    <AirplayIcon className="mx-auto h-6 w-6" />
+                    <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
+                    <p className="text-sm max-w-xs pb-3 mx-auto">
+                      By continuing, you are setting up an account and agree to our
+                      User Agreement and Privacy Policy.
+                    </p>
+                  </div>
+                </div>
+                <Input
+                  autoFocus
+                  // endContent={
+                  //   <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                  // }
+                  label="Email"
+                  placeholder="Enter your email"
+                  variant="bordered"
+                  labelPlacement="outside"
+                />
+                <Input
+                  // endContent={
+                  //   <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                  // }
+                  label="Password"
+                  placeholder="Enter your password"
+                  type={isVisible ? "text" : "password"}
+                  variant="bordered"
+                  labelPlacement="outside"
+                  endContent={
+                    <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                      {isVisible ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                      )}
+                    </button>
+                  }
+                />
+                <div className="flex py-2 px-1 justify-between">
+                  <Checkbox
+                    classNames={{
+                      label: "text-small",
+                    }}
+                  >
+                    Remember me
+                  </Checkbox>
+                  <Link className="text-purple-500" href="#" size="sm">
+                    Forgot password?
+                  </Link>
+                </div>
+                <Divider className="text-lime-400"/>
+                <div className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
+                  <UserAuthForm />
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onPress={onClose}>
+                  Sign in
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </NextUINavbar>
   );
 };
